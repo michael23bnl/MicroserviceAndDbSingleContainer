@@ -1,0 +1,17 @@
+﻿version: "3.9"
+services:  
+  microservice:
+    container_name: microservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=localhost;Port=5432;Database=userdb;Username=postgres;Password=123
+    ports:
+      - "8080:8080"
+      - "5432:5432"
+    restart: always
+
+volumes:
+  postgres-data:
